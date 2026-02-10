@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Expense Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <div class="header">
+            <div class="profile-section">
+                <img src="https://i.pravatar.cc/150?u=a042581f4e29026704d" alt="Profile">
+                <div class="welcome-text">
+                    <p>Good Morning,</p>
+                    <h3>Alex Johnson</h3>
+                </div>
+            </div>
+            <div class="currency-selector">
+                <select id="currency-api" onchange="convertCurrency()">
+                    <option value="USD">USD ($)</option>
+                    <option value="EUR">EUR (€)</option>
+                    <option value="INR">INR (₹)</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="main-card animate-pop">
+            <p>Total Balance</p>
+            <h1 id="total-balance">$0.00</h1>
+            <div class="card-footer">
+                <div class="income">
+                    <i class="fas fa-arrow-down"></i>
+                    <span>Income</span>
+                    <h4 id="income-val">$0.00</h4>
+                </div>
+                <div class="expense">
+                    <i class="fas fa-arrow-up"></i>
+                    <span>Expenses</span>
+                    <h4 id="expense-val">$0.00</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <h3>Spending Analysis</h3>
+            <canvas id="expenseChart"></canvas>
+        </div>
+
+        <div class="list-section">
+            <div class="list-header">
+                <h3>Transactions</h3>
+                <button onclick="toggleModal()" class="add-btn"><i class="fas fa-plus"></i></button>
+            </div>
+            <ul id="transaction-list"></ul>
+        </div>
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content animate-slide-up">
+            <h3>Add New Transaction</h3>
+            <input type="text" id="desc" placeholder="What did you buy?">
+            <input type="number" id="amt" placeholder="Amount (Use - for expense)">
+            <select id="cat">
+                <option value="Food">Food & Drinks</option>
+                <option value="Shopping">Shopping</option>
+                <option value="Housing">Housing</option>
+                <option value="Salary">Salary/Income</option>
+            </select>
+            <div class="modal-btns">
+                <button onclick="addTransaction()" class="save-btn">Save</button>
+                <button onclick="toggleModal()" class="cancel-btn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
